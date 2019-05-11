@@ -1,14 +1,8 @@
 package RoTests;
 
 
-import Pages.LogInPOP;
-import Pages.MedicalQuestionsPOP;
-import Pages.TheBasicsPOP;
-import Pages.WelcomePagePOP;
+
 import org.junit.Test;
-import org.openqa.selenium.support.PageFactory;
-
-
 import static java.lang.Thread.sleep;
 
 
@@ -16,10 +10,6 @@ import static java.lang.Thread.sleep;
 public class SmokeCheckTest extends MainTest {
 
 
-    LogInPOP LogInPOP = PageFactory.initElements(driver, LogInPOP.class);
-    WelcomePagePOP WelcomePagePOP = PageFactory.initElements(driver, WelcomePagePOP.class);
-    TheBasicsPOP TheBasicsPOP = PageFactory.initElements(driver, TheBasicsPOP.class);
-    MedicalQuestionsPOP MedicalQuestionsPOP = PageFactory.initElements(driver, MedicalQuestionsPOP.class);
 
 
     @Test
@@ -50,9 +40,6 @@ public class SmokeCheckTest extends MainTest {
 
         MedicalQuestionsPOP.waitUntilMedicalQuestionsPageIsLoaded();
         MedicalQuestionsPOP.clickContinueButton();
-
-
-
 
 
     }
