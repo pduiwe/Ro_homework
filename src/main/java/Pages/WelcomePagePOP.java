@@ -44,7 +44,6 @@ public class WelcomePagePOP {
     // interactions//
 
     public void clickOnOurTreatmentPlansTab() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader preloader--is_loaded']")));
         ourTreatmentPlansTab.click();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h2[@class='treatment_plans-heading heading']")));
     }

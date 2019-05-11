@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static java.lang.Thread.sleep;
 import static org.junit.Assert.assertTrue;
 
 
@@ -57,8 +58,9 @@ public class LogInPOP {
         loginPageStartMyVisitButton.click();
     }
 
-    public void checkThatUserNameIsDisplayedOnWelcomeMessage(String firstName) {
+    public void checkThatUserNameIsDisplayedOnWelcomeMessage(String firstName) throws InterruptedException {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='start-header']//h2[contains(text(),"+firstName+")]")));
+        sleep(2000);
         assertTrue(driver.findElement(By.xpath("//div[@class='start-header']//h2[contains(text(),"+firstName+")]")).isDisplayed());
     }
 
