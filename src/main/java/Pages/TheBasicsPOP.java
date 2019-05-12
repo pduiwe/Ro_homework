@@ -38,7 +38,7 @@ public class TheBasicsPOP {
 
 
 
-    //page factory constructor//
+
     public TheBasicsPOP(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 25);
@@ -53,12 +53,6 @@ public class TheBasicsPOP {
         wait.until(ExpectedConditions.elementToBeClickable(maleBiologicalSexButton));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='preloader preloader--is_loaded']")));
         maleBiologicalSexButton.click();
-    }
-
-    public void checkThatButtonTurnsGreen() {
-        String colorString = driver.findElement(By.xpath("//label[@for='male']")).getAttribute("class");
-        String[] background = colorString .split("#");
-        assertTrue(background[1].equals("1ECE96"));
     }
 
     public void setEligibleBirthDate() {

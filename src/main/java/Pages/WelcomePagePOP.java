@@ -34,7 +34,6 @@ public class WelcomePagePOP {
 
 
 
-    //page factory constructor//
     public WelcomePagePOP(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 25);
@@ -44,8 +43,10 @@ public class WelcomePagePOP {
     // interactions//
 
     public void clickOnOurTreatmentPlansTab() {
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='preloader preloader--is_loaded']")));
+        wait.until(ExpectedConditions.elementToBeClickable(ourTreatmentPlansTab));
         ourTreatmentPlansTab.click();
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h2[@class='treatment_plans-heading heading']")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[@class='treatment_plans-offers-intro']")));
     }
 
     public void clickOnHowItWorksTab() {

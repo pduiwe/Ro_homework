@@ -1,14 +1,11 @@
 package Pages;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import static java.lang.Thread.sleep;
 import static org.junit.Assert.assertTrue;
 
 
@@ -39,7 +36,7 @@ public class LogInPOP {
 
 
 
-    //page factory constructor//
+
     public LogInPOP(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 25);
@@ -56,11 +53,10 @@ public class LogInPOP {
         passwordField.sendKeys(password);
         agreeCheckbox.click();
         loginPageStartMyVisitButton.click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='start-header']//h2[contains(text(),"+firstName+")]")));
     }
 
-    public void checkThatUserNameIsDisplayedOnWelcomeMessage(String firstName) throws InterruptedException {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='start-header']//h2[contains(text(),"+firstName+")]")));
-        sleep(2000);
+    public void checkThatUserNameIsDisplayedOnWelcomeMessage(String firstName) {
         assertTrue(driver.findElement(By.xpath("//div[@class='start-header']//h2[contains(text(),"+firstName+")]")).isDisplayed());
     }
 

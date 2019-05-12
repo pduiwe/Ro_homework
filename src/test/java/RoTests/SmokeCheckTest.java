@@ -3,25 +3,20 @@ package RoTests;
 
 
 import org.junit.Test;
-import static java.lang.Thread.sleep;
 
 
-
-public class SmokeCheckTest extends MainTest {
-
-
+public class SmokeCheckTest extends TestBase {
 
 
     @Test
-    public void logInAsEligibleMaleAndBuyViagra() throws InterruptedException {
+    public void logInAsEligibleMaleAndBuyViagra() {
         String email = "tester@gmail.com";
         String firstName = "John";
         String lastName = "Snow";
         String password = "youKnowNothing";
 
         LogInPOP.logIntoPortal(email, firstName, lastName, password);
-
-        LogInPOP.checkThatUserNameIsDisplayedOnWelcomeMessage(firstName);// w tej metodzie w POP jest brzydki sleep na animacje
+        LogInPOP.checkThatUserNameIsDisplayedOnWelcomeMessage(firstName);
 
         WelcomePagePOP.clickOnOurTreatmentPlansTab();
         WelcomePagePOP.checkThreeProductsOnOurTreatmentPlansTab();
@@ -29,18 +24,32 @@ public class SmokeCheckTest extends MainTest {
         WelcomePagePOP.checkThreeStartStepsItemsOnHowItWorksTab();
         WelcomePagePOP.clickOnStartMyVisitButton();
 
-        sleep(2000); // brzydki sleep na animacje
-
+        waitUntilTrickyAnimationIsFinished();
         TheBasicsPOP.setEligibleBirthDate();
         TheBasicsPOP.clickMaleButton();
         TheBasicsPOP.setZipCodeForNYC();
         TheBasicsPOP.clickNextButton();
 
-        sleep(2000); //brzydki sleep na animacje
-
-        MedicalQuestionsPOP.waitUntilMedicalQuestionsPageIsLoaded();
+        MedicalQuestionsPOP.waitUntilWelcomeMedicalQuestionsPage();
+        waitUntilTrickyAnimationIsFinished();
         MedicalQuestionsPOP.clickContinueButton();
 
+        waitUntilTrickyAnimationIsFinished();
+
+        MedicalQuestionsPOP.checkFirstQuestionText();
+        MedicalQuestionsPOP.clickYesEveryTimeForFirstQuestion();
+
+        waitUntilTrickyAnimationIsFinished();
+
+        MedicalQuestionsPOP.checkSecondQuestionText();
+        MedicalQuestionsPOP.clickIdoNotRecallForSecondQuestion();
+
+        waitUntilTrickyAnimationIsFinished();
+
+        MedicalQuestionsPOP.selectNeitherCheckboxOnThirdQuestion();
+        MedicalQuestionsPOP.clickNextButtonAfterCheckboxSelection();
 
     }
+
+
 }
