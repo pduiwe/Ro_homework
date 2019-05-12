@@ -1,11 +1,7 @@
 package RoTests;
 
-import Pages.LogInPOP;
-import Pages.MedicalQuestionsPOP;
-import Pages.TheBasicsPOP;
-import Pages.WelcomePagePOP;
+import Pages.*;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.openqa.selenium.By;
@@ -27,8 +23,9 @@ public class TestBase {
     WelcomePagePOP WelcomePagePOP = PageFactory.initElements(driver, WelcomePagePOP.class);
     TheBasicsPOP TheBasicsPOP = PageFactory.initElements(driver, TheBasicsPOP.class);
     MedicalQuestionsPOP MedicalQuestionsPOP = PageFactory.initElements(driver, MedicalQuestionsPOP.class);
+    GoToTheDoctorForBloodPresureReadingPOP GoToTheDoctorForBloodPresureReadingPOP = PageFactory.initElements(driver, GoToTheDoctorForBloodPresureReadingPOP.class);
 
-    public void waitUntilTrickyAnimationIsFinished() {
+    public void waitUntilAnimationIsFinished() {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='flow-question-overlay flow-question-overlay--out animating forward']")));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='flow-question-overlay flow-question-overlay--out flow-question-overlay--secondary animating forward']")));
     }
@@ -45,11 +42,10 @@ public class TestBase {
 
     }
 
-//   @AfterClass
-//   public static void tearDown()
+//   @After
+//   public void tearDown()
 //        {driver.quit();
 //        }
-
 
 }
 

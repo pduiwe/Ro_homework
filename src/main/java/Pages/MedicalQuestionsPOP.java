@@ -40,6 +40,21 @@ public class MedicalQuestionsPOP {
     @FindBy(xpath = "(//button[@class='button flow-question-button button--block button--primary'])[2 and text() = 'Next']")
     public WebElement nextButton;
 
+    @FindBy(xpath = "(//button[@class='flow-choice_list-link'])[2 and text() = 'Less than it was']")
+    public WebElement fourthQuestionAnswerLessThanItWas;
+
+    @FindBy(xpath = "(//button[@class='flow-choice_list-link'])[2 and text() = 'No']")
+    public WebElement fifthQuestionAnswerNo;
+
+    @FindBy(xpath = "(//button[@class='flow-choice_list-link'])[2 and text() = 'Yes, and it was normal.']")
+    public WebElement sixthQuestionAnswerYesAndItWasNormal;
+
+    @FindBy(xpath = "(//button[@class='flow-choice_list-link'])[2 and text() = 'No, I don’t know my blood pressure']")
+    public WebElement seventhQuestionAboutBllodPressureNoIDontKnowMyBloodPressure;
+
+
+
+
 
 
 
@@ -92,5 +107,20 @@ public class MedicalQuestionsPOP {
         nextButton.click();
     }
 
+    public void goToBloodPressureQuestion() {
+        fourthQuestionAnswerLessThanItWas.click();
+        waitUntilTrickyAnimationIsFinished();
+        fifthQuestionAnswerNo.click();
+        waitUntilTrickyAnimationIsFinished();
+        sixthQuestionAnswerYesAndItWasNormal.click();
+        waitUntilTrickyAnimationIsFinished();
+        seventhQuestionAboutBllodPressureNoIDontKnowMyBloodPressure.click();
+        waitUntilTrickyAnimationIsFinished();
+    }
+
+    public void waitUntilTrickyAnimationIsFinished() {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='flow-question-overlay flow-question-overlay--out animating forward']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='flow-question-overlay flow-question-overlay--out flow-question-overlay--secondary animating forward']")));
+    }
 
 }

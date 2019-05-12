@@ -51,12 +51,20 @@ public class TheBasicsPOP {
     public void clickMaleButton() {
 
         wait.until(ExpectedConditions.elementToBeClickable(maleBiologicalSexButton));
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='preloader preloader--is_loaded']")));
         maleBiologicalSexButton.click();
+    }
+
+    public void clickFemaleButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(femaleBiologicalSexButton));
+        femaleBiologicalSexButton.click();
     }
 
     public void setEligibleBirthDate() {
         birthDateTextField.sendKeys("19051981");
+    }
+
+    public void setNOTEligibleBirthDate() {
+        birthDateTextField.sendKeys("01052019");
     }
 
     public void setZipCodeForNYC() {
@@ -65,7 +73,19 @@ public class TheBasicsPOP {
 
     public void clickNextButton() {
         nextButton.click();
-
     }
+
+    public void ConfirmMessageForLadiesThatEDIsMenThing() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class='flow-question-header-description'])[2]")));
+        String InfoForGirls = driver.findElement(By.xpath("(//div[@class='flow-question-header-description'])[2]")).getText();
+        assertTrue(InfoForGirls.contains("Unfortunately our ED treatment is currently only available to men. However, we would love to know if there’s anything we can do to help."));
+    }
+
+    public void ConfirmMessageForChildThatEDIsAdultThing() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class='flow-question-header-description'])[2]")));
+        String InfoForGirls = driver.findElement(By.xpath("(//div[@class='flow-question-header-description'])[2]")).getText();
+        assertTrue(InfoForGirls.contains("Unfortunately our ED treatment is not available to people under 18. However, we would love to know if there is anything we can do to help. Please confirm your email and leave comments below - we will get back to you as soon as we can."));
+    }
+
 
 }

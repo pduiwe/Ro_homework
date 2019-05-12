@@ -87,6 +87,4 @@ public class WelcomePagePOP {
         String ThirdBlockMain = driver.findElement(By.xpath("(//h3[@class='start-steps-heading'])[3]")).getText();
         assertTrue(ThirdBlockMain.contains("Your doctor will follow up."));
     }
-
-
 }
