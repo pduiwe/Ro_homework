@@ -18,17 +18,10 @@ public class SmokeCheckChildTest extends TestBase {
 
 
         LogInPOP.logIntoPortal(email, firstName, lastName, password);
-
-        waitUntilAnimationIsFinished();
         LogInPOP.checkThatUserNameIsDisplayedOnWelcomeMessage(firstName);
-
         WelcomePagePOP.clickOnStartMyVisitButton();
-        waitUntilAnimationIsFinished();
-
         TheBasicsPOP.setNOTEligibleBirthDate();
         TheBasicsPOP.clickMaleButton();
-
-        waitUntilAnimationIsFinished();
         TheBasicsPOP.ConfirmMessageForChildThatEDIsAdultThing();
     }
 }

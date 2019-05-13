@@ -17,16 +17,10 @@ public class SmokeCheckFemaleTest extends TestBase {
         String password = "NotForYouRory";
 
         LogInPOP.logIntoPortal(email, firstName, lastName, password);
-        waitUntilAnimationIsFinished();
         LogInPOP.checkThatUserNameIsDisplayedOnWelcomeMessage(firstName);
-
         WelcomePagePOP.clickOnStartMyVisitButton();
-
-        waitUntilAnimationIsFinished();
         TheBasicsPOP.setEligibleBirthDate();
         TheBasicsPOP.clickFemaleButton();
-
-        waitUntilAnimationIsFinished();
         TheBasicsPOP.ConfirmMessageForLadiesThatEDIsMenThing();
     }
 }

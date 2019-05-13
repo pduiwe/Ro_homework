@@ -47,7 +47,11 @@ public class GoToTheDoctorForBloodPresureReadingPOP {
     public void checkThatThankYouMessageIsDisplayedAfterSubmitingForm() {
         wait.until(ExpectedConditions.visibilityOf(ThankYouMessage));
         assertTrue((ThankYouMessage).isDisplayed());
+    }
 
+    public void waitUntilAnimationIsFinished() {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='flow-question-overlay flow-question-overlay--out animating forward']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='flow-question-overlay flow-question-overlay--out flow-question-overlay--secondary animating forward']")));
     }
 
 

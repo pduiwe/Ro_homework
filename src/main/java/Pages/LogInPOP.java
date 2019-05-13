@@ -57,8 +57,13 @@ public class LogInPOP {
     }
 
     public void checkThatUserNameIsDisplayedOnWelcomeMessage(String firstName) {
+        waitUntilAnimationIsFinished();
         assertTrue(driver.findElement(By.xpath("//div[@class='start-header']//h2[contains(text(),"+firstName+")]")).isDisplayed());
     }
 
+    public void waitUntilAnimationIsFinished() {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='flow-question-overlay flow-question-overlay--out animating forward']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='flow-question-overlay flow-question-overlay--out flow-question-overlay--secondary animating forward']")));
+    }
 
 }

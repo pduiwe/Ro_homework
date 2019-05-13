@@ -60,10 +60,12 @@ public class TheBasicsPOP {
     }
 
     public void setEligibleBirthDate() {
+        waitUntilAnimationIsFinished();
         birthDateTextField.sendKeys("19051981");
     }
 
     public void setNOTEligibleBirthDate() {
+        waitUntilAnimationIsFinished();
         birthDateTextField.sendKeys("01052019");
     }
 
@@ -76,15 +78,21 @@ public class TheBasicsPOP {
     }
 
     public void ConfirmMessageForLadiesThatEDIsMenThing() {
+        waitUntilAnimationIsFinished();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class='flow-question-header-description'])[2]")));
         String InfoForGirls = driver.findElement(By.xpath("(//div[@class='flow-question-header-description'])[2]")).getText();
         assertTrue(InfoForGirls.contains("Unfortunately our ED treatment is currently only available to men. However, we would love to know if there’s anything we can do to help."));
     }
 
     public void ConfirmMessageForChildThatEDIsAdultThing() {
+        waitUntilAnimationIsFinished();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class='flow-question-header-description'])[2]")));
         String InfoForGirls = driver.findElement(By.xpath("(//div[@class='flow-question-header-description'])[2]")).getText();
         assertTrue(InfoForGirls.contains("Unfortunately our ED treatment is not available to people under 18. However, we would love to know if there is anything we can do to help. Please confirm your email and leave comments below - we will get back to you as soon as we can."));
+    }
+    public void waitUntilAnimationIsFinished() {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='flow-question-overlay flow-question-overlay--out animating forward']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='flow-question-overlay flow-question-overlay--out flow-question-overlay--secondary animating forward']")));
     }
 
 

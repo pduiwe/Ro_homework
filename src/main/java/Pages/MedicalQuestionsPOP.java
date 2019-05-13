@@ -72,12 +72,14 @@ public class MedicalQuestionsPOP {
     }
 
     public void checkFirstQuestionText() {
+        waitUntilAnimationIsFinished();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class='flow-question-header-title'])[2]")));
         String Question1 = driver.findElement(By.xpath("(//div[@class='flow-question-header-title'])[2]")).getText();
         assertTrue(Question1.contains("Do you ever have a problem getting or maintaining an erection that is satisfying enough for sex?"));
     }
 
     public void clickContinueButton() {
+        waitUntilAnimationIsFinished();
         WebElement element = driver.findElement(By.xpath("(//button[@class='button button--big button--block button--primary flow-question-button'])[2 and text() = 'Continue']"));
         Actions actions = new Actions(driver);
         actions.moveToElement(element);
@@ -90,6 +92,7 @@ public class MedicalQuestionsPOP {
     }
 
     public void checkSecondQuestionText() {
+        waitUntilAnimationIsFinished();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class='flow-question-header-title'])[2]")));
         String Question2 = driver.findElement(By.xpath("(//div[@class='flow-question-header-title'])[2]")).getText();
         assertTrue(Question2.contains("How did your ED begin? Select the one that best describes your ED."));
@@ -100,6 +103,7 @@ public class MedicalQuestionsPOP {
     }
 
     public void selectNeitherCheckboxOnThirdQuestion() {
+        waitUntilAnimationIsFinished();
         thirdQuestionCheckboxNeither.click();
     }
 
@@ -107,18 +111,19 @@ public class MedicalQuestionsPOP {
         nextButton.click();
     }
 
-    public void goToBloodPressureQuestion() {
+    public void goFastToBloodPressureQuestion() {
+        waitUntilAnimationIsFinished();
         fourthQuestionAnswerLessThanItWas.click();
-        waitUntilTrickyAnimationIsFinished();
+        waitUntilAnimationIsFinished();
         fifthQuestionAnswerNo.click();
-        waitUntilTrickyAnimationIsFinished();
+        waitUntilAnimationIsFinished();
         sixthQuestionAnswerYesAndItWasNormal.click();
-        waitUntilTrickyAnimationIsFinished();
+        waitUntilAnimationIsFinished();
         seventhQuestionAboutBllodPressureNoIDontKnowMyBloodPressure.click();
-        waitUntilTrickyAnimationIsFinished();
+        waitUntilAnimationIsFinished();
     }
 
-    public void waitUntilTrickyAnimationIsFinished() {
+    public void waitUntilAnimationIsFinished() {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='flow-question-overlay flow-question-overlay--out animating forward']")));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='flow-question-overlay flow-question-overlay--out flow-question-overlay--secondary animating forward']")));
     }
